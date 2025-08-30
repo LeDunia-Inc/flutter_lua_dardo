@@ -4,13 +4,14 @@ version: 0.0.2
 homepage: https://github.com/arcticfox1919/flutter_lua_dardo
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=3.0.0"
   flutter: ">=1.17.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  lua_dardo: ^0.0.3
+  lua_dardo:
+    path: ../LuaDardo
 
 dev_dependencies:
   flutter_test:

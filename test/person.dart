@@ -5,6 +5,7 @@ import 'package:lua_dardo/lua.dart';
 class Person {
   static const Map<String, DartFunction> _registry = {
     "new": _newPerson,
+    "create": _newPerson,
   };
 
   static const Map<String, DartFunction> _personMember = {"sayHi": _sayHi};
@@ -32,9 +33,12 @@ class Person {
   }
 
   static int _sayHi(LuaState ls) {
-    Person p = ls.toUserdata<Person>(1).data;
-    if (ls.isString(-1)) {
-      p.sayHi(ls.toStr(-1));
+    Person? p = ls.toUserdata<Person>(1)?.data;
+    if (p != null && ls.isString(-1)) {
+      String? name = ls.toStr(-1);
+      if (name != null) {
+        p.sayHi(name);
+      }
     }
     return 0;
   }
